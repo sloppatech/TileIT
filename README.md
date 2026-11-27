@@ -1,20 +1,14 @@
 # tileit
 
-Turn a texture, or a whole material (albedo, normal, roughness, height…),
-into a seamlessly tiling in a few clicks.
+Turn an appropriate texture, or a whole set of texture maps (albedo, normal, roughness, height…) into a seamlessly tiling one in a few clicks.
 
-Drop a photo (128 px to 4K and up) into the window, press **Tile it**, and
-see the result tiled next to the original. Regular textures (bricks, tiles,
-planks) are detected, straightened and fitted to whole repeats automatically.
-Written in [Odin](https://odin-lang.org): a single executable with no runtime dependencies, so you can download it and just use it. 
+Drop a photo (128 px to 4K and up) into the window, press **Tile it**, and see the result tiled next to the original. Regular textures (bricks, tiles, planks) are detected, straightened and fitted to whole repeats automatically. Written in [Odin](https://odin-lang.org): a single executable with no runtime dependencies, so you can download it and just use it, or compile it from source if you so prefer. 
 
-**New to it?** Read the [user guide](docs/GUIDE.md): a first tile in a minute,
-what the controls mean, recipes for bricks, sand, wood and material sets, and
-fixes for common problems.
+**New to it?** Read the [user guide](docs/TileIT.docx): a first tile in a minute, what the controls mean, recipes for bricks, sand, wood and material sets, and fixes for common problems.
 
 ## Building
 
-Needs an Odin compiler (any recent nightly). raylib and stb ship with Odin.
+Needs an [Odin compiler](https://odin-lang.org/docs/install/) (any recent nightly). raylib and stb ship with Odin.
 
 ```
 odin build . -o:speed
@@ -22,13 +16,9 @@ odin build . -o:speed
 
 ## Using it
 
-**GUI**: run `tileit.exe`, or `tileit.exe some_texture.png` (this also makes
-"Open with…" in Explorer work). Drop files into the window or use **Open…**.
+**GUI**: run `tileit.exe`, or `tileit.exe some_texture.png` (this also makes "Open with…" in Explorer work). Drop files into the window or use **Open…**.
 
-Open **one map** and its siblings in the same folder are found by name
-(`Bricks_Color` / `_NormalGL` / `_Roughness` / `_Displacement` / `_AmbientOcclusion`,
-`brick_wall_diff_2k` / `_nor_gl_2k` / `_rough_2k` / `_arm_2k`, `wood-basecolor` /
-`-normal`…), or pick several files at once. All maps get exactly the same edit.
+Open **one map** and its siblings in the same folder are found by name (`Bricks_Color` / `_NormalGL` / `_Roughness` / `_Displacement` / `_AmbientOcclusion`, `brick_wall_diff_2k` / `_nor_gl_2k` / `_rough_2k` / `_arm_2k`, `wood-basecolor` / `-normal`…), or pick several files at once. All maps get exactly the same edit.
 
 | Control                               | What it does                                                                                                                      |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -50,9 +40,7 @@ Open **one map** and its siblings in the same folder are found by name
 | Even contrast                         | Even out washed-out / extra-contrasty patches (colour map only)                                                                   |
 | Scale                                 | Size of the area Flatten and Even contrast look at                                                                                |
 
-On the input pane, the bright amber frame is your selection, the thin amber outline is its
-trusted centre, and the white frame is the part the result was made from.
-Changing a setting re-runs automatically when you let go of it.
+On the input pane, the bright amber frame is your selection, the thin amber outline is its trusted center, and the white frame is the part the result was made from. Changing a setting re-runs automatically when you let go of it.
 
 **CLI**:
 
@@ -73,11 +61,9 @@ tileit --compare A B             # mean/max pixel difference
 tileit --make-test OUT [W H [16]]
 ```
 
-It prints what it did (for example `straightened 4.1°, repeat 764x821,
-quilted, cropped 1900x1900 -> 1529x1642`) and a **seam score**: the colour
-jump across the wrap-around edges divided by the typical jump between
-neighbouring pixels. A raw photo is usually 2–20; around 1 or below means the
-seam is invisible.
+It prints what it did (for example `straightened 4.1°, repeat 764x821, quilted, cropped 1900x1900 -> 1529x1642`) and a **seam score**: the color
+jump across the wrap-around edges divided by the typical jump between neighboring pixels. A raw photo is usually 2–20; around 1 or below means the
+seam should be mostly invisible.
 
 ## How it works
 
@@ -178,19 +164,26 @@ and saves screenshots), `--make-test-set ALBEDO DIR NAME`, `--check-normals H N`
   the photo was straightened.
 - Dialogs are Windows-only (drag and drop works everywhere raylib does).
 
+## Possible future work
+
+- Automatic generation of maps (albedo, heightmap, etc) from a single texture image
+- Better Linux support
+
+## Support us
+If you like this software and would like to donate you can do so through [kofi](https://ko-fi.com/rafiwiri).
+
+## Statement of AI usage
+Artificial intelligence was utilized for research and development. The tool itself does not contain any generative AI components.
+
 ## License
 
-tileit is released under the [MIT License](LICENSE): use it, change it, ship it,
-sell things you made with it, in free or commercial projects. Textures you make
-with tileit are yours; the licence covers the tool, not its output.
+tileit is released under the [MIT License](LICENSE): You may use tileit, change the software, ship it, sell things you made with it in free or commercial projects. Textures made with tileit remain yours as the license merely covers the tool and not the output. 
 
-The executable includes code from Odin, raylib, raygui and stb, all under
-permissive licences; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+The executable includes code from Odin, raylib, raygui and stb, all under permissive licences; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## References
 
-tileit is built from published methods. Where to look if you want the details,
-grouped by the step that uses them (see [How it works](#how-it-works)):
+tileit is built from published methods. If you'd like to understand the science behind it the papers are grouped by the steps that use them (see [How it works](#how-it-works)):
 
 **Making edges match (Quick)**
 - L. Moisan. *Periodic plus Smooth Image Decomposition.* Journal of
@@ -254,7 +247,7 @@ grouped by the step that uses them (see [How it works](#how-it-works)):
   1153–1160, 1981. [doi:10.1109/TASSP.1981.1163711](https://doi.org/10.1109/TASSP.1981.1163711)
   (the bicubic kernel used for the wrap-around output resize)
 
-**Further reading** (related work tileit doesn't use, mostly learned methods)
+**Further reading** (related work tileit doesn't use, mostly machine learning / GAN methods)
 - V. Kwatra, A. Schödl, I. Essa, G. Turk, A. Bobick. *Graphcut Textures: Image
   and Video Synthesis Using Graph Cuts.* ACM Transactions on Graphics 22(3),
   277–286, 2003 (Proc. SIGGRAPH).
