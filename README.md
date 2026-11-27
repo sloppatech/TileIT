@@ -1,7 +1,6 @@
 # tileit
 
-Turn an appropriate texture, or a whole set of texture maps (albedo, normal, roughness, height…) into a seamlessly tiling one in a few clicks.
-[[image/tileit_brick_example_3x3.PNG]]
+Turn an appropriate texture, or a whole set of texture maps (albedo, normal, roughness, height…) into a seamlessly tiling one in a few clicks. See the image folder for screenshots.
 Drop a photo (128 px to 4K and up) into the window, press **Tile it**, and see the result tiled next to the original. Regular textures (bricks, tiles, planks) are detected, straightened and fitted to whole repeats automatically. Written in [Odin](https://odin-lang.org): a single executable with no runtime dependencies, so you can download it and just use it, or compile it from source if you so prefer. 
 
 **New to it?** Read the [user guide](docs/TileIT.docx): a first tile in a minute, what the controls mean, recipes for bricks, sand, wood and material sets, and fixes for common problems.
