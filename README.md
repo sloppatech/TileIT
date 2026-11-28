@@ -172,7 +172,7 @@ and saves screenshots), `--make-test-set ALBEDO DIR NAME`, `--check-normals H N`
 If you like this software and would like to donate you can do so through [kofi](https://ko-fi.com/rafiwiri).
 
 ## Statement of AI usage
-Artificial intelligence was utilized for research and development. The tool itself does not contain any generative AI components.
+Artificial intelligence was utilized for research and development. The tool itself does not contain any generative AI components (in that the tool itself doesn't utilize GenAI technology).
 
 ## License
 
